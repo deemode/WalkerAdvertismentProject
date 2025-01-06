@@ -113,12 +113,12 @@ Rate limiting protects your API from abuse and ensures fair usage by:
 - Preventing excessive requests from a single client.
 - Reducing server load and mitigating DDoS attacks.
 
-  ### Enable CORS Safely
+### Enable CORS Safely
 
-  Restrict Cross-Origin Resource Sharing (CORS) to trusted domains. This is already done to some level with the current implementation.
+Restrict Cross-Origin Resource Sharing (CORS) to trusted domains. This is already done to some level with the current implementation.
 
-  ### Monitor and Log Activity
- Comprehensive logging helps:
+### Monitor and Log Activity
+Comprehensive logging helps:
 
 - Detect suspicious activity.
 - Debug issues quickly.
