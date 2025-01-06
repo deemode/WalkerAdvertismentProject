@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/9b9640e6-2f91-4a12-99ca-751200af4a75/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/WalkerAdvertismentUI",
+    "appService.deploySubpath": "."
+}

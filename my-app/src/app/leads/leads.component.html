@@ -1,0 +1,71 @@
+<div class="container mt-5">
+    <div class="card shadow-sm col-lg-10 col-md-10 col-12 mx-auto">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Leads</h5>
+          <div class="container">
+            <div class="col-lg-10 col-md-10 col-12 mx-auto text-end">
+                <button (click)="navigateToCreateLead()" type="button" class="btn btn-primary btn-sm">New Lead</button>
+            </div>
+            <div class="table-responsive col-lg-8 col-md-8 col-12 mx-auto">
+                <div class="text-center my-4" *ngIf="leads.length === 0">
+                    <p class="fw-bold">No Leads</p>
+                </div>
+
+                <table class="table" *ngIf="leads.length > 0">
+                  <thead>
+                    <tr>
+                        <th class="col-3">Name</th>
+                        <th class="col-2">Phone</th>
+                        <th class="col-2">Communication</th>
+                        <th class="col-2">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let lead of leads">
+                        <td class="col-3">{{ lead.name }}</td>
+                        <td class="col-2">{{ lead.phoneNumber }}</td>
+                        <td class="col-2 px-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#19b96f" [attr.fill]="lead.canCommunicateText ? '#19b96f' : '#df1d30'"  class="bi bi-telephone-fill mx-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                            </svg>
+        
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" [attr.fill]="lead.canCommunicateEmail ? '#19b96f' : '#df1d30'" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
+                            </svg>
+        
+                        </td>
+                        <td class="text-decoration-underline text-primary px-2 col-2" (click)="openDetails(lead.leadId, detailsModal)" style="cursor: pointer;">Details</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #detailsModal let-modal>
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">Lead Details:</h5>
+          <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="leadDetails; else loading">
+                <p><strong>Name:</strong> {{ leadDetails.name }}</p>
+                <p><strong>Email:</strong> {{ leadDetails.email || 'N/A' }}</p>
+                <p><strong>Phone:</strong> {{ leadDetails.phoneNumber }}</p>
+                <p><strong>Zip Code:</strong> {{ leadDetails.zipCode }}</p>
+                <p><strong>Text Permission:</strong> {{ leadDetails.canCommunicateText ? 'Yes' : 'No' }}</p>
+                <p><strong>Email Permission:</strong> {{ leadDetails.canCommunicateEmail ? 'Yes' : 'No' }}</p>
+            </div>
+            <ng-template #loading>
+                <p>Loading details..</p>
+            </ng-template>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+        </div>
+      </div>
+</ng-template>

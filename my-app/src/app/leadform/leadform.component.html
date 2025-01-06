@@ -1,0 +1,115 @@
+<div class="container mt-5">
+    <div class="card shadow-sm col-lg-10 col-md-10 col-12 mx-auto">
+      <div class="card-body">
+        <h5 class="card-title fw-bold">New Lead</h5>
+        <div class="container">
+          <div class="col-lg-8 col-md-8 col-12 mx-auto">
+            <button (click)="navigateToLeads()" type="button" class="btn btn-secondary btn-sm">Back</button>
+          </div>
+          <div class="row">
+            <form [formGroup]="leadForm" (ngSubmit)="onSubmit()" class="g-3 needs-validation col-lg-6 col-md-6 col-12 mx-auto" novalidate>
+              <div class="mb-3">
+                <label for="input-name" class="form-label fw-bold">
+                  Name <span class="text-danger fw-bold">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="input-name"
+                  class="form-control"
+                  formControlName="name"
+                  placeholder="Lead Name"
+                  [class.is-invalid]="leadForm.get('name')?.invalid && leadForm.get('name')?.touched"
+                  required
+                />
+                <div *ngIf="leadForm.get('name')?.invalid && leadForm.get('name')?.touched" class="invalid-feedback">
+                  Name is required.
+                </div>
+              </div>
+  
+              <div class="mb-3">
+                <label for="input-phone" class="form-label fw-bold">
+                  Phone <span class="text-danger fw-bold">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="input-phone"
+                  class="form-control"
+                  formControlName="phoneNumber"
+                  placeholder="555-555-5555"
+                  [class.is-invalid]="leadForm.get('phoneNumber')?.invalid && leadForm.get('phoneNumber')?.touched"
+                  required
+                />
+                <div *ngIf="leadForm.get('phoneNumber')?.invalid && leadForm.get('phoneNumber')?.touched" class="invalid-feedback">
+                  Phone number is required.
+                </div>
+              </div>
+  
+              <div class="mb-3">
+                <label for="input-email" class="form-label fw-bold">Email</label>
+                <input
+                  type="email"
+                  id="input-email"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="name@example.com"
+                  [class.is-invalid]="leadForm.get('email')?.invalid && leadForm.get('email')?.touched"
+                />
+                <div *ngIf="leadForm.get('email')?.invalid && leadForm.get('email')?.touched" class="invalid-feedback">
+                  Must be a valid email.
+                </div>
+              </div>
+  
+              <div class="mb-3">
+                <label for="input-zipCode" class="form-label fw-bold">
+                  Zip Code <span class="text-danger fw-bold">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="input-zipCode"
+                  class="form-control"
+                  formControlName="zipCode"
+                  placeholder="55555"
+                  [class.is-invalid]="leadForm.get('zipCode')?.invalid && leadForm.get('zipCode')?.touched"
+                  required
+                />
+                <div *ngIf="leadForm.get('zipCode')?.invalid && leadForm.get('zipCode')?.touched" class="invalid-feedback">
+                  Zip Code is required.
+                </div>
+              </div>
+  
+              <label class="form-label fw-bold">
+                Text Permission <span class="text-danger fw-bold">*</span>
+              </label>
+              <br />
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" formControlName="canCommunicateText" [value]="true" required />
+                <label class="form-check-label">Yes</label>
+              </div>
+              <div class="form-check form-check-inline mb-4">
+                <input type="radio" class="form-check-input" formControlName="canCommunicateText" [value]="false" required />
+                <label class="form-check-label">No</label>
+              </div><br/>
+
+              <label class="form-label fw-bold">
+                Email Permission <span class="text-danger fw-bold">*</span>
+              </label>
+              <br />
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" formControlName="canCommunicateEmail" [value]="true" required />
+                <label class="form-check-label">Yes</label>
+              </div>
+              <div class="form-check form-check-inline mb-4">
+                <input type="radio" class="form-check-input" formControlName="canCommunicateEmail" [value]="false" required />
+                <label class="form-check-label">No</label>
+              </div>
+  
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit" [disabled]="leadForm.invalid">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
