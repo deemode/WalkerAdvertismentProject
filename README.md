@@ -97,18 +97,18 @@ The X-Api-Key is required for all API requests. This ensures that only authorize
 
 # Next Steps: Enhancing Security and Functionality
 
-To improve the overall security and functionality of your API and Dashboard, consider implementing the following advanced features:
+To improve the overall security and functionality of this API and Dashboard, we can consider implementing the following advanced features:
 
 ---
 
 ### Use JWT
 JSON Web Tokens (JWT) are a secure and scalable way to authenticate users and provide session-based functionality for real-time applications. By using JWT:
-- You can verify user identities without storing session data on the server.
+- We can verify user identities without storing session data on the server.
 - Real-time actions (e.g., live lead updates) can be authenticated seamlessly.
 
 ### Implement Rate Limiting
 
-Rate limiting protects your API from abuse and ensures fair usage by:
+Rate limiting protects the API from abuse and ensures fair usage by:
 
 - Preventing excessive requests from a single client.
 - Reducing server load and mitigating DDoS attacks.
